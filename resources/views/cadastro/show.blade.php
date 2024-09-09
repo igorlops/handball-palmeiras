@@ -25,13 +25,20 @@
                 <p><strong>Email:</strong> {{ $cadastro->email }}</p>
                 <p><strong>Endereço:</strong> {{ $cadastro->endereco }}</p>
                 <p><strong>Estado Civil:</strong> {{ $cadastro->estado_civil }}</p>
-                <p><strong>Tem filhos:</strong> {{ $cadastro->filhos }}</p>
+                <p><strong>Tem filhos? </strong> {{ $cadastro->filhos }}</p>
+                <p><strong>Quantidade de filhos:</strong> {{ $cadastro->qtd_filhos ?? 0}}</p>
                 <p><strong>Profissão:</strong> {{ $cadastro->profissao }}</p>
                 <p><strong>Número da Camisa:</strong> {{ $cadastro->numero_camisa }}</p>
                 <p><strong>Posição:</strong> {{ $cadastro->desc_posicao }}</p>
-                <p><strong>Faz Atividade Física:</strong> {{ $cadastro->faz_atividade }}</p>
-                <p><strong>Nutricionista:</strong> {{ $cadastro->nutricionista }}</p>
-                <p><strong>Tem Alergia:</strong> {{ $cadastro->tem_alergia }}</p>
+                <p><strong>Faz acompanhamento com nutricionista? </strong> {{ $cadastro->nutricionista }}</p>
+                <p><strong>Faz terapia?</strong> {{ $cadastro->terapia }}</p>
+                <p><strong>Faz Atividade Física?</strong> {{ $cadastro->faz_atividade }}</p>
+                <p><strong>Quantas vezes por semana: </strong> {{ $cadastro->qtd_atividade_semana ?? 0}}</p>
+                <p><strong>Atividades Físicas:</strong> {{ $cadastro->desc_atividade }}</p>
+                <p><strong>Tem plano de saúde:</strong> {{ $cadastro->tem_plano }}</p>
+                <p><strong>Plano saúde:</strong> {{ $cadastro->plano_saude }}</p>
+                <p><strong>Tem Alergia?</strong> {{ $cadastro->tem_alergia }}</p>
+                <p><strong>Alergia:</strong> {{ $cadastro->alergia }}</p>
                 <p><strong>Criado em:</strong> {{ convertDateHourBr($cadastro->created_at)}}</p>
             </div>
         </div>
