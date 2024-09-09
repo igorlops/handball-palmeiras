@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('atividades_jogadoras', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('atividade_fisica');
-            $table->foreign('atividade_fisica')->references('atividades')->on('id');
+            $table->foreign('atividade_fisica')->references('id')->on('atividades');
             $table->unsignedBigInteger('jogadora');
-            $table->foreign('jogadora')->references('cadastro')->on('id');
+            $table->foreign('jogadora')->references('id')->on('cadastros');
         });
     }
 

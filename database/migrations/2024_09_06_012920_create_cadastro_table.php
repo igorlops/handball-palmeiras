@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('apelido');
+            $table->string('email');
+            $table->text('endereco');
             $table->date('data_nascimento');
             $table->string('identidade');
             $table->string('cpf');
             $table->string('telefone');
-            $table->string('email');
-            $table->text('endereco');
             $table->string('estado_civil');
             $table->string('filhos');
             $table->string('qtd_filhos')->nullable();
@@ -28,13 +28,14 @@ return new class extends Migration
             $table->string('numero_camisa');
             $table->unsignedBigInteger('posicao');
             $table->foreign('posicao')->references('id')->on('posicoes');
-            $table->enum('acomp_nutricionista', ['Sim', 'Não']);
+            $table->enum('nutricionista', ['Sim', 'Não']);
             $table->enum('terapia', ['Sim', 'Não']);
-            $table->enum('faz_atividade_fisica', ['Sim', 'Não']);
-            $table->enum('tem_plano_saude',['Sim','Não']);
-            $table->string('plano_saude');
+            $table->enum('faz_atividade', ['Sim', 'Não']);
+            $table->integer('qtd_atividade_semana')->nullable();
+            $table->enum('tem_plano',['Sim','Não']);
+            $table->string('plano_saude')->nullable();
             $table->enum('tem_alergia',['Sim','Não']);
-            $table->string('alergia');
+            $table->string('alergia')->nullable();
             $table->timestamps();
         });
     }

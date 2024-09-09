@@ -1,0 +1,9 @@
+table {
+    table-layout: auto; /* Força as colunas a ter um tamanho fixo */
+    width: 100%; /* Garante que a tabela ocupe 100% da largura */
+}
+
+table th, table td {
+    white-space: nowrap; /* Impede a quebra de linha */
+    text-overflow: ellipsis; /* Adiciona "..." ao final do texto que excede */
+}
