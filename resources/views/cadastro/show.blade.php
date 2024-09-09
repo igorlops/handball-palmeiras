@@ -9,14 +9,11 @@
             <i class="bi bi-arrow-left"></i>
             Voltar
         </a>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">
 
-    <div class="card">
-        <div class="card-header">
-            <h4>{{ $cadastro->nome }}</h4>
-        </div>
+        <div class="card">
+            <div class="card-header">
+                <h4>{{ $cadastro->nome }}</h4>
+            </div>
             <div class="card-body">
                 <p><strong>ID:</strong> {{ $cadastro->id }}</p>
                 <p><strong>Nome:</strong> {{ $cadastro->nome }}</p>
@@ -35,7 +32,7 @@
                 <p><strong>Faz Atividade Física:</strong> {{ $cadastro->faz_atividade }}</p>
                 <p><strong>Nutricionista:</strong> {{ $cadastro->nutricionista }}</p>
                 <p><strong>Tem Alergia:</strong> {{ $cadastro->tem_alergia }}</p>
-                <p><strong>Criado em:</strong> {{ $cadastro->created_at->format('d/m/Y H:i:s') }}</p>
+                <p><strong>Criado em:</strong> {{ convertDateHourBr($cadastro->created_at)}}</p>
             </div>
         </div>
     </section>

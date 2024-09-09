@@ -145,7 +145,7 @@ class CadastroController extends Controller
             'c.created_at'
         )
         ->where('c.id',$id)
-        ->get();
+        ->first();
 
         return view('cadastro.show',compact('cadastro'));
 
