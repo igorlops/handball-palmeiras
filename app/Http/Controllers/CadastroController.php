@@ -15,66 +15,7 @@ class CadastroController extends Controller
 
     public function index()
     {
-        $cadastros = DB::table('cadastros as c')
-        ->join('posicoes as p', 'p.id', '=', 'c.posicao')
-        ->select(
-            'c.id',
-            'c.nome',
-            'c.apelido',
-            'c.data_nascimento',
-            'c.identidade',
-            'c.cpf',
-            'c.telefone',
-            'c.email',
-            'c.endereco',
-            'c.estado_civil',
-            'c.filhos',
-            'c.qtd_filhos',
-            'c.profissao',
-            'c.numero_camisa',
-            'p.descricao as desc_posicao',
-            'c.nutricionista',
-            'c.terapia',
-            'c.faz_atividade',
-            'c.qtd_atividade_semana',
-            'c.tem_plano',
-            'c.plano_saude',
-            'c.tem_alergia',
-            'c.alergia',
-            'c.created_at',
-            DB::raw('GROUP_CONCAT(DISTINCT a.descricao ORDER BY a.descricao ASC SEPARATOR ", ") as desc_atividade')
-        )
-        ->leftJoin('atividades_jogadoras as aj', 'aj.jogadora', '=', 'c.id')
-        ->leftJoin('atividades as a', 'a.id', '=', 'aj.atividade_fisica')
-        ->groupBy(
-            'c.id',
-            'c.nome',
-            'c.apelido',
-            'c.data_nascimento',
-            'c.identidade',
-            'c.cpf',
-            'c.telefone',
-            'c.email',
-            'c.endereco',
-            'c.estado_civil',
-            'c.filhos',
-            'c.qtd_filhos',
-            'c.profissao',
-            'c.numero_camisa',
-            'p.descricao',
-            'c.nutricionista',
-            'c.terapia',
-            'c.faz_atividade',
-            'c.qtd_atividade_semana',
-            'c.tem_plano',
-            'c.plano_saude',
-            'c.tem_alergia',
-            'c.alergia',
-            'c.created_at'
-        )
-        ->get();
-
-
+        $cadastros = Cadastro::getCadastro();
         return view('cadastro.index', compact('cadastros'));
     }
 
@@ -87,68 +28,8 @@ class CadastroController extends Controller
 
     public function show($id)
     {
-        $cadastro = DB::table('cadastros as c')
-        ->join('posicoes as p', 'p.id', '=', 'c.posicao')
-        ->select(
-            'c.id',
-            'c.nome',
-            'c.apelido',
-            'c.data_nascimento',
-            'c.identidade',
-            'c.cpf',
-            'c.telefone',
-            'c.email',
-            'c.endereco',
-            'c.estado_civil',
-            'c.filhos',
-            'c.qtd_filhos',
-            'c.profissao',
-            'c.numero_camisa',
-            'p.descricao as desc_posicao',
-            'c.nutricionista',
-            'c.terapia',
-            'c.faz_atividade',
-            'c.qtd_atividade_semana',
-            'c.tem_plano',
-            'c.plano_saude',
-            'c.tem_alergia',
-            'c.alergia',
-            'c.created_at',
-            DB::raw('GROUP_CONCAT(DISTINCT a.descricao ORDER BY a.descricao ASC SEPARATOR ", ") as desc_atividade')
-        )
-        ->leftJoin('atividades_jogadoras as aj', 'aj.jogadora', '=', 'c.id')
-        ->leftJoin('atividades as a', 'a.id', '=', 'aj.atividade_fisica')
-        ->groupBy(
-            'c.id',
-            'c.nome',
-            'c.apelido',
-            'c.data_nascimento',
-            'c.identidade',
-            'c.cpf',
-            'c.telefone',
-            'c.email',
-            'c.endereco',
-            'c.estado_civil',
-            'c.filhos',
-            'c.qtd_filhos',
-            'c.profissao',
-            'c.numero_camisa',
-            'p.descricao',
-            'c.nutricionista',
-            'c.terapia',
-            'c.faz_atividade',
-            'c.qtd_atividade_semana',
-            'c.tem_plano',
-            'c.plano_saude',
-            'c.tem_alergia',
-            'c.alergia',
-            'c.created_at'
-        )
-        ->where('c.id',$id)
-        ->first();
-
-        return view('cadastro.show',compact('cadastro'));
-
+        $cadastro = Cadastro::getCadastro($id);
+        return view('cadastro.show',with(['cadastro' => $cadastro->first()]));
     }
 
     public function store(CadastroRequest $request)

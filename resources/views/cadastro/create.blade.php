@@ -57,7 +57,7 @@
                 <div class="mb-3 col-sm-12  col-md-4 col-lg-3">
                     <label for="estado_civil" class="form-label">Estado Civil</label>
                     <select name="estado_civil" class="form-select" aria-label="Estado civil" required>
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         <option value="Solteira">Solteira</option>
                         <option value="Casada">Casada</option>
                         <option value="Divorciada">Divorciada</option>
@@ -68,7 +68,7 @@
                 <div class="mb-3 col-sm-12 col-md-4 col-lg-3">
                     <label for="filhos" class="form-label">Tem filhos?</label>
                     <select name="filhos" class="form-select" onchange="onChangeOption(this,['qtd_filhos'])" aria-label="Tem filhos" required>
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Não">Não</option>
                     </select>
@@ -91,7 +91,7 @@
                 <div class="mb-3 col-sm-12 col-md-4 col-lg-3">
                     <label for="posicao" class="form-label">Posição que joga</label>
                     <select name="posicao" class="form-select" aria-label="Posição que joga" required>
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         @foreach ($posicoes as $posicao)
                             <option value="{{ $posicao->id }}">{{ $posicao->descricao }}</option>
                         @endforeach
@@ -101,7 +101,7 @@
                     <label for="nutricionista" class="form-label">Faz acompanhamento com nutricionista?</label>
                     <select name="nutricionista" class="form-select" aria-label="Faz acompanhamento com nutricionista"
                         required>
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Não">Não</option>
                     </select>
@@ -109,7 +109,7 @@
                 <div class="mb-3 col-sm-12  col-md-4 col-lg-3">
                     <label for="terapia" class="form-label">Faz terapia?</label>
                     <select name="terapia" class="form-select" aria-label="Faz terapia" required>
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Não">Não</option>
                     </select>
@@ -117,7 +117,7 @@
                 <div class="mb-3 col-sm-12  col-md-4 col-lg-3">
                     <label for="faz_atividade" class="form-label">Faz atividade física?</label>
                     <select name="faz_atividade" onchange="onChangeOption(this,['qtd_atividade_semana','atividade_fisica'])" class="form-select" aria-label="Faz atividade física" required>
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Não">Não</option>
                     </select>
@@ -130,7 +130,7 @@
                 <div class="mb-3 col-sm-12  col-md-4 col-lg-3 d-none">
                     <label for="atividade_fisica" class="form-label">Quais atividades?</label>
                     <select name="atividade_fisica[]" id="atividade_fisica" multiple class="form-select" aria-label="Quais atividades você pratiica">
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         @foreach ($atividades as $atividade)
                             <option value="{{$atividade->id}}">{{$atividade->descricao}}</option>
                         @endforeach
@@ -140,7 +140,7 @@
                 <div class="mb-3 col-sm-12  col-md-4 col-lg-3">
                     <label for="tem_plano" class="form-label">Tem plano de saúde?</label>
                     <select name="tem_plano" onchange="onChangeOption(this,['plano_saude'])" class="form-select" aria-label="Tem plano de saúde" required>
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Não">Não</option>
                     </select>
@@ -153,7 +153,7 @@
                 <div class="mb-3 col-sm-12 col-md-4 col-lg-3">
                     <label for="tem_alergia" class="form-label">Tem alergia?</label>
                     <select name="tem_alergia" onchange="onChangeOption(this,['alergia'])" class="form-select" aria-label="Faz terapia" required>
-                        <option selected>Escolha uma opção</option>
+                        <option value="" selected>Escolha uma opção</option>
                         <option value="Sim">Sim</option>
                         <option value="Não">Não</option>
                     </select>
