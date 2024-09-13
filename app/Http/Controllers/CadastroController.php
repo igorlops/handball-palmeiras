@@ -55,6 +55,40 @@ class CadastroController extends Controller
             'success' => 'Dados enviados com sucesso!'
         ]);
     }
+    public function edit(Cadastro $cadastro)
+    {
+        $posicoes = DB::connection('mysql')->table('posicoes')->select('*')->get();
+        $atividades = DB::connection('mysql')->table('atividades')->select('*')->get();
+        return view('cadastro.edit', compact('posicoes','atividades', 'cadastro'));
+    }
+    public function update(CadastroRequest $request, Cadastro $cadastro)
+    {
+        // Os dados já estão validados e a data de nascimento formatada
+        $dataValidated = $request->validated();
+
+        // Criar o cadastro no banco de dados
+        $cadastroCreated = $cadastro->update($dataValidated);
+
+        if ($dataValidated['faz_atividade'] === 'Sim') {
+            // Salvar as atividades físicas selecionadas na tabela 'atividades_jogadoras'
+            if ($request->has('atividade_fisica')) {
+                foreach ($request->input('atividade_fisica') as $atividadeId) {
+                    DB::table('atividades_jogadoras')->insert([
+                        'atividade_fisica' => $atividadeId, // ID da atividade
+                        'jogadora' => $cadastro->id // ID da jogadora recém criada
+                    ]);
+                }
+            }
+        }
+        return redirect()->route('cadastro.index')->with([
+            'success' => 'Dados atualizados com sucesso!'
+        ]);
+    }
+
+    public function destroy(Cadastro $cadastro){
+        $cadastro->delete();
+        return redirect()->route('cadastro.index');
+    }
 
     public function export()
     {

@@ -47,8 +47,15 @@
                                         <a href="{{route('cadastro.show',$cadastro->id)}}" class="btn btn-primary">
                                             <i class="bi bi-eye"></i>
                                         </a>
+                                        <form action="{{ route('cadastro.delete', $cadastro->id) }}" method="POST" style="display: inline-block" onsubmit="return confirm('Tem certeza que deseja apagar essa atleta?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
                                     </th>
-                                    <th scope="row">{{$cadastro->id}}</th>
+                                    <th scope="row">{{$loop->iteration}}</th>
                                     <th>{{$cadastro->nome}}</th>
                                     <td>{{$cadastro->apelido}}</td>
                                     <td>{{convertDateBr($cadastro->data_nascimento)}}</td>

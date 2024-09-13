@@ -44,6 +44,7 @@ class CadastroRequest extends FormRequest
             'telefone' => ['required', 'string'],
             'estado_civil' => ['required', 'string'],
             'filhos' => ['required', 'string'],
+            'qtd_filhos' => ['nullable', 'string'],
             'profissao' => ['required', 'string'],
             'numero_camisa' => ['required', 'string'],
             'posicao' => ['required', 'integer'],
@@ -53,6 +54,7 @@ class CadastroRequest extends FormRequest
             'tem_plano' => ['required', 'string'],
             'plano_saude' => ['nullable', 'string'],
             'tem_alergia' => ['required', 'string'],
+            'alergia' => ['nullable', 'string'],
         ];
     }
 
