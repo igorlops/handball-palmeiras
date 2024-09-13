@@ -10,6 +10,10 @@
                 <h2 class="fs-1">Editar atleta {{$cadastro->nome}}</h2>
                 <h3>Palmeiras academy</h3>
             </div>
+            <a href="{{route('cadastro.index')}}" class="btn btn-warning my-5">
+                <i class="bi bi-arrow-left"></i>
+                Voltar
+            </a>
 
             <form action="{{ route('cadastro.update',$cadastro->id) }}" method="POST"
                 class="form mb-5 d-flex flex-wrap justify-content-between gap-1">
