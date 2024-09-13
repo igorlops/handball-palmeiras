@@ -66,6 +66,9 @@ class Cadastro extends Model
             'c.alergia',
             'c.created_at',
         )
+        ->orderBy(
+            'c.nome',
+        )
         ->groupBy(
             'c.id',
             'c.nome',
