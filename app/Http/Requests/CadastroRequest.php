@@ -51,6 +51,7 @@ class CadastroRequest extends FormRequest
             'nutricionista' => ['required', 'string'],
             'terapia' => ['required', 'string'],
             'faz_atividade' => ['required', 'string'],
+            'qtd_atividade_semana' => ['nullable', 'string'],
             'tem_plano' => ['required', 'string'],
             'plano_saude' => ['nullable', 'string'],
             'tem_alergia' => ['required', 'string'],

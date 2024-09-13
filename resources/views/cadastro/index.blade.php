@@ -47,6 +47,9 @@
                                         <a href="{{route('cadastro.show',$cadastro->id)}}" class="btn btn-primary">
                                             <i class="bi bi-eye"></i>
                                         </a>
+                                        <a href="{{route('cadastro.edit',$cadastro->id)}}" class="btn btn-warning">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
                                         <form action="{{ route('cadastro.delete', $cadastro->id) }}" method="POST" style="display: inline-block" onsubmit="return confirm('Tem certeza que deseja apagar essa atleta?')">
                                             @csrf
                                             @method('DELETE')

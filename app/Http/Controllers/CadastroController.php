@@ -57,26 +57,35 @@ class CadastroController extends Controller
     }
     public function edit(Cadastro $cadastro)
     {
+        $atividadeJogadora = DB::connection('mysql')->table('atividades_jogadoras')->where('jogadora',$cadastro->id)->pluck('atividade_fisica')->toArray();
         $posicoes = DB::connection('mysql')->table('posicoes')->select('*')->get();
         $atividades = DB::connection('mysql')->table('atividades')->select('*')->get();
-        return view('cadastro.edit', compact('posicoes','atividades', 'cadastro'));
+        $cadastro->data_nascimento = convertDateBr($cadastro->data_nascimento);
+
+        return view('cadastro.edit', compact('posicoes','atividades', 'cadastro', 'atividadeJogadora'));
     }
     public function update(CadastroRequest $request, Cadastro $cadastro)
     {
         // Os dados já estão validados e a data de nascimento formatada
         $dataValidated = $request->validated();
-
         // Criar o cadastro no banco de dados
         $cadastroCreated = $cadastro->update($dataValidated);
 
         if ($dataValidated['faz_atividade'] === 'Sim') {
             // Salvar as atividades físicas selecionadas na tabela 'atividades_jogadoras'
             if ($request->has('atividade_fisica')) {
+                $atividadesAntigas = DB::table('atividades_jogadoras')->where('jogadora',$cadastro->id)->get();
+                foreach($atividadesAntigas as $atividade){
+                    $atividadeID = $atividade->id;
+                    DB::table('atividades_jogadoras')->where('id',$atividadeID)->delete();
+                }
                 foreach ($request->input('atividade_fisica') as $atividadeId) {
-                    DB::table('atividades_jogadoras')->insert([
-                        'atividade_fisica' => $atividadeId, // ID da atividade
-                        'jogadora' => $cadastro->id // ID da jogadora recém criada
-                    ]);
+                    if($atividadeId){
+                        DB::table('atividades_jogadoras')->insert([
+                            'atividade_fisica' => $atividadeId, // ID da atividade
+                            'jogadora' => $cadastro->id // ID da jogadora recém criada
+                        ]);
+                    }
                 }
             }
         }

@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
     $('.date').mask('00/00/0000');
     $('.time').mask('00:00:00');
@@ -9,6 +11,16 @@ $(document).ready(function(){
     $('.mixed').mask('AAA 000-S0S');
     $('.cpf').mask('000.000.000-00', {reverse: true});
     $('.money').mask('000.000.000.000.000,00', {reverse: true});
+
+
+    selectElement = $('select[name="filhos"]');
+    onChangeOption(selectElement[0], ['qtd_filhos']);
+    selectElement = $('select[name="faz_atividade"]');
+    onChangeOption(selectElement[0], ['qtd_atividade_semana','atividade_fisica']);
+    selectElement = $('select[name="tem_plano"]');
+    onChangeOption(selectElement[0], ['plano_saude']);
+    selectElement = $('select[name="tem_alergia"]');
+    onChangeOption(selectElement[0], ['alergia']);
 });
 
 
@@ -26,7 +38,6 @@ function tornarCamposVisiveis(data, action) {
 
 function onChangeOption(e,arr_elements) {
 
-    console.log(e,arr_elements)
     for(let i = 0; i < arr_elements.length; i++){
         if(e.value === "Sim"){
             tornarCamposVisiveis(arr_elements[i],'adicionar');
